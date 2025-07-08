@@ -1,15 +1,13 @@
 $(document).ready(function () {
-//datatable 
-$(".table").DataTable ({
-  /* columnDefs: [{
-    "defaultContent": "-",
-    "targets": "_all"
-  }], */
+  //datatable
+$(".table").DataTable({
   "processing" : true,
   "serverSide" :true,
-  "ajax" : "assets/php/listar-contatos.php"
-})
-
+  "ajax" : {
+    "url" : "assets/php/listar-contatos.php",
+    "type" : "POST"
+    }
+});
 
   function limparFormulario() {
     $("#form")[0].reset();
@@ -75,8 +73,8 @@ $(".table").DataTable ({
       });
     } else {
       $(".resp").html("");
-        carregarContatos();
-        limparFormulario();
+      carregarContatos();
+      limparFormulario();
     }
   });
 
