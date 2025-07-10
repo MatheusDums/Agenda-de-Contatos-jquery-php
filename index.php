@@ -1,0 +1,118 @@
+<!-- php conexão -->
+<?php
+session_start();
+
+//criptografar senha
+//echo password_hash(123456, PASSWORD_DEFAULT);
+
+
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "db_login";
+
+try {
+  $conn = new PDO("mysql:host=$host;dbname=" . $dbname, $user, $password);
+/*   echo "Conexão com o banco de dados realizado com sucesso"; */
+} catch(PDOException $err) {
+  echo "ERRO: Conexão com o banco de dados retornou um erro" . $err->getMessage();
+}
+
+/* ------- */
+
+$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
+
+if(!empty($dados['SendLogin'])) {
+/*   var_dump($dados); */
+  $query_usuario = "SELECT log_id, log_email, log_senha FROM tb_login WHERE log_email = :email LIMIT 1";
+  $result_usuario = $conn->prepare($query_usuario);
+  $result_usuario->bindParam(':email', $dados['usuarioEmail'], PDO::PARAM_STR );
+  $result_usuario->execute();
+
+  if(($result_usuario) AND ($result_usuario->rowCount() != 0)) {
+    $row_usuario = $result_usuario->fetch(PDO::FETCH_ASSOC);
+/*     var_dump($row_usuario); */
+    if(password_verify($dados['usuarioSenha'], $row_usuario['log_senha'])) {
+      $_SESSION['email'] = $row_usuario['log_email'];
+      $_SESSION['senha'] = $row_usuario['log_senha'];
+      header("Location: principal.html");
+    } else {
+      $_SESSION['msg'] = "<div class='alert alert-danger text-center alert-dismissible fade show' style='width: 200px;' role='alert'>
+       Email ou Senha Invalido.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
+    }
+  } else {
+    $_SESSION['msg'] = "<div class='alert alert-danger text-center alert-dismissible fade show' style='width: 200px;' role='alert'>
+       Email ou Senha Invalido.
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+        </div>";
+  }
+
+
+}
+
+if(isset($_SESSION['msg'])) {
+  echo $_SESSION['msg'];
+  unset($_SESSION['msg']);
+}
+
+
+
+?>
+<!-- php fim -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="assets/style/bootstrap-5.2.1-dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/style/style.css" />
+    <title>Login - Contatos Bud</title>
+  </head>
+
+
+
+  <body class=" justify-content-center align-items-center" style="height: 100vh;">
+    <div class="container  mt-4 ">
+      <div class="row align-items-center">
+        <div class="col-md-10 mx-auto col-lg-5">
+
+        <div class="col_resp">
+
+        </div>
+
+          <form action="" method="POST" class="p-4 rounded-3 bg-secondary">
+
+            <div class="text-center text-light pb-3">
+                <h2>Login - BudContatos</h2>
+            </div>
+            
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" name="usuarioEmail" id="email_input" placeholder="name@example.com" />
+              <label for="email_input">Email</label>
+            </div>
+
+            <div class="form-floating">
+              <input type="password" class="form-control" name="usuarioSenha" id="senha_input" placeholder="Password" />
+              <label for="senha_input">Senha</label>
+            </div>
+
+            <div class="d-grid gap-2 pt-3">
+              <input type="submit" class="btn btn-light" value="Login" name="SendLogin">
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/style/bootstrap-5.2.1-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

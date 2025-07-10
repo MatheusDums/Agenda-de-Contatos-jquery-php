@@ -15,7 +15,7 @@ if (isset($_POST['excluir'])) {
     $id = $_POST['excluir'];
     $stmt = $pdo->prepare("DELETE FROM tb_contatos WHERE con_id = ?");
     $stmt->execute([$id]);
-    echo "<div class='alert alert-success text-center alert-dismissible fade show' role='alert'>
+    echo "<div class='alert alert-danger text-center alert-dismissible fade show' role='alert'>
        Contato excluido com sucesso!
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
         </div>";

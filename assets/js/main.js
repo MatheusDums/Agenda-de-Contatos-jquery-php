@@ -1,4 +1,6 @@
 $(document).ready(function () {
+
+  // datatables
   let tabela = $("#tabela-contatos").DataTable({
     ajax: {
       url: "assets/php/agenda.php",
@@ -31,15 +33,15 @@ $(document).ready(function () {
     language: {
       url: "assets/json/traducao.json"
     },
-    pageLength: 5
+    pageLength: 10
   });
 
-  // Recarrega tabela após qualquer alteração
+  // recarrega tabela após qualquer alteração
   function recarregarTabela() {
     tabela.ajax.reload(null, false);
   }
 
-  // Enviar formulário
+  // enviar formulário
   $("#form").on("submit", function (e) {
     e.preventDefault();
     let dados = new FormData(this);
@@ -58,13 +60,13 @@ $(document).ready(function () {
     });
   });
 
-  // Limpar formulário
+  // limpar formulário
   function limparFormulario() {
     $("#form")[0].reset();
     $('#form input[name="id"]').remove();
   }
 
-  // Editar
+  // editar
   $(document).on("click", ".editar", function () {
     let id = $(this).data("id");
     $.post("assets/php/agenda.php", { editar: id }, function (contato) {
@@ -81,7 +83,7 @@ $(document).ready(function () {
     }, "json");
   });
 
-  // Excluir
+  // excluir
   $(document).on("click", ".excluir", function () {
     let id = $(this).data("id");
     if (confirm("Deseja excluir este contato?")) {
@@ -94,7 +96,7 @@ $(document).ready(function () {
     }
   });
 
-  // Cancelar
+  // cancelar
   $("#cancelar").on("click", function () {
     limparFormulario();
   });
