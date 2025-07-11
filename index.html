@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="../assets/style/bootstrap-5.2.1-dist/css/bootstrap.min.css"
+      href="assets/style/bootstrap-5.2.1-dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../assets/style/style.css" />
+    <link rel="stylesheet" href="assets/style/style.css" />
     <title>Login - Contatos Bud</title>
   </head>
 
@@ -17,13 +17,17 @@
     <div class="container  mt-4 text-center">
       <div class="row align-items-center">
         <div class="col-md-10 mx-auto col-lg-5">
+
+        <div class="img-bud">
+          <img src="assets/media/images/image.png" style="height: 120px;" alt="">
+        </div>
           
         <div id="col_resp">
         </div>
         
-          <form action="" method="POST" class="p-4 rounded-3 bg-secondary" id="login-usuario-form">
+          <form action="" method="POST" class="p-4 rounded-3" id="login-usuario-form">
 
-            <div class="text-center text-light pb-3">
+            <div class="text-center text-dark pb-3">
                 <h2>Login - BudContatos</h2>
             </div>
             
@@ -38,7 +42,8 @@
             </div>
 
             <div class="d-grid gap-2 pt-3">
-              <input type="submit" class="btn btn-light" value="Login" name="SendLogin">
+<!--               <input type="submit" class="btn btn-dark mh-100" value="Login" name="SendLogin"> -->
+              <button type="submit" class="btn btn-dark" style="height: 58px;" name="SendLogin">Login</button>
             </div>
 
           </form>
@@ -48,7 +53,9 @@
 
     </div>
 
-    <script src="../assets/style/bootstrap-5.2.1-dist/js/bootstrap.min.js"></script>
-    <script src="../assets/js/login.js"></script>
+    
+
+    <script src="assets/style/bootstrap-5.2.1-dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/login.js"></script>
   </body>
 </html>

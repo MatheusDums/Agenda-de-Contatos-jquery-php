@@ -1,3 +1,13 @@
+<?php
+session_start();
+ob_start();
+
+if((!isset($_SESSION['id'])) AND (!isset($_SESSION['email']))) {
+
+  header("Location: index.html");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -9,9 +19,9 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="text-center p-3">Agenda de contatos Bud - JQuery</h1>
+      <h1 class="text-center p-3">BudContatos</h1>
       <div class="d-grid gap-2 d-md-block position-absolute p-4 top-0 end-0">
-          <a href="sair.php" class="btn btn-primary">Sair</a>
+          <a href="assets/php/sair.php" class="btn btn-primary">Sair</a>
       </div>
       <div class="row">
         <div class="col resp"></div>
@@ -54,7 +64,7 @@
       </div>
       
 
-      <h2 class="text-center p-3">Agenda de Contatos</h2>
+      <h2 class="text-center p-3 mt-5">Agenda de Contatos</h2>
 
       <table id="tabela-contatos" class="table">
         <thead class="text-center">
@@ -77,6 +87,7 @@
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/style/bootstrap-5.2.1-dist/js/bootstrap.min.js"></script>
     <script src="assets/js/datatables.min.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="assets/js/moment-with-locales.js"></script>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>

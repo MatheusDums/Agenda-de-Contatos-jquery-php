@@ -1,9 +1,10 @@
 $(document).ready(function () {
+  DataTable.datetime('D MMM YYYY');
 
   // datatables
   let tabela = $("#tabela-contatos").DataTable({
     ajax: {
-      url: "assets/php/agenda.php",
+      url: "./assets/php/agenda.php",
       dataSrc: ""
     },
     columns: [
@@ -31,7 +32,7 @@ $(document).ready(function () {
       }
     ],
     language: {
-      url: "assets/json/traducao.json"
+      url: "./assets/json/traducao.json"
     },
     pageLength: 10
   });
@@ -46,7 +47,7 @@ $(document).ready(function () {
     e.preventDefault();
     let dados = new FormData(this);
     $.ajax({
-      url: "assets/php/agenda.php",
+      url: "./assets/php/agenda.php",
       type: "POST",
       data: dados,
       processData: false,
@@ -69,7 +70,7 @@ $(document).ready(function () {
   // editar
   $(document).on("click", ".editar", function () {
     let id = $(this).data("id");
-    $.post("assets/php/agenda.php", { editar: id }, function (contato) {
+    $.post("./assets/php/agenda.php", { editar: id }, function (contato) {
       $("#nome").val(contato.con_nome);
       $("#telefone").val(contato.con_telefone);
       $("#email").val(contato.con_email);
@@ -87,7 +88,7 @@ $(document).ready(function () {
   $(document).on("click", ".excluir", function () {
     let id = $(this).data("id");
     if (confirm("Deseja excluir este contato?")) {
-      $.post("assets/php/agenda.php", { excluir: id }, function (resposta) {
+      $.post("./assets/php/agenda.php", { excluir: id }, function (resposta) {
         $(".resp").html(resposta);
         setTimeout(() => $(".resp").html(""), 4000);
         recarregarTabela();
