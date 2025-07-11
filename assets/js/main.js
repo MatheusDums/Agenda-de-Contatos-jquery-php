@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  DataTable.datetime('D MMM YYYY');
+DataTable.datetime('D MMM YYYY');
+
 
   // datatables
   let tabela = $("#tabela-contatos").DataTable({

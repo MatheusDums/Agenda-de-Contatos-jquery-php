@@ -87,7 +87,8 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['email']))) {
     <script src="assets/js/jquery-3.7.1.min.js"></script>
     <script src="assets/style/bootstrap-5.2.1-dist/js/bootstrap.min.js"></script>
     <script src="assets/js/datatables.min.js"></script>
-    <script src="assets/js/moment-with-locales.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/datetime-moment.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>
