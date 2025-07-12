@@ -1,5 +1,6 @@
 $(document).ready(function () {
 DataTable.datetime('D MMM YYYY');
+$.fn.dataTable.moment('DD/MM/YYYY');
 
 
   // datatables
@@ -12,7 +13,11 @@ DataTable.datetime('D MMM YYYY');
       { data: "con_nome" },
       { data: "con_telefone" },
       { data: "con_email" },
-      { data: "con_nascimento" },
+      { data: "con_nascimento",
+        render: function (data) {
+         return moment(data).format("DD/MM/YYYY");
+        }
+       },
       { data: "con_observacoes" },
       {
         data: "con_id",
