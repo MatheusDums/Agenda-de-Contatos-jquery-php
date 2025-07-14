@@ -19,8 +19,7 @@ if((!isset($_SESSION['id'])) AND (!isset($_SESSION['email']))) {
   </head>
   <body>
     <div class="container">
-      <a href="https://www.buddemeyer.com.br/"><img src="assets/media/images/image.png" style="height: 50px;" class="position-absolute top-0 start-0 m-3"  alt=""></a>
-      
+      <!-- <a href="https://www.buddemeyer.com.br/"><img src="assets/media/images/image.png" style="height: 50px;" class="position-absolute top-0 start-0 m-3"  alt=""></a> -->
       <h1 class="text-center p-3">BudContatos</h1>
       <div class="d-grid gap-2 d-md-block position-absolute p-4 top-0 end-0">
           <a href="assets/php/sair.php" class="btn btn-primary">Sair</a>
