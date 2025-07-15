@@ -35,7 +35,6 @@ Siga os seguintes passos para acessar a Agenda de Contatos:
 
 1. **Preparação do ambiente**
 - Certifique-se de que o [XAMPP](https://www.apachefriends.org/) está instalado e configurado em seu computador.
-- [shields.io](https://shields.io/)
 
 2. **Configuração:**
    - Copie todos os arquivos do projeto para uma pasta no seu computador.
